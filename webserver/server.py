@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, url_for
 import mysql_mongodb as connector
+import mongo_to_mongo as conn2
 
 app = Flask(__name__)
 
@@ -19,6 +20,14 @@ def hello_world():
     pass_mysql = request.form['pass_mysql']
     val = connector.migrate(host_mo, host_mysql, client_mo,
                             db_mysql, user_mysql, pass_mysql)
+    print(val)
+    return redirect(url_for('success', name=val))
+
+
+@app.route('/mongo', methods=['post'])
+def new():
+    path = request.form['path']
+    val = conn2.migrate(path)
     print(val)
     return redirect(url_for('success', name=val))
 
