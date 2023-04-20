@@ -17,4 +17,4 @@ def migrate(path):
     stri = 'mongoimport\t'+path+'\t-d bookdb -c books --drop'
     print(stri)
     os.system(stri)
-    return True
+    return "done"

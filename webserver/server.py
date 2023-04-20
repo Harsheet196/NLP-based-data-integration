@@ -1,16 +1,17 @@
 from flask import Flask, request, redirect, url_for
 import mysql_mongodb as connector
 import mongo_to_mongo as conn2
+import csv_mongodb as conn3
 
 app = Flask(__name__)
 
 
 @app.route('/success/<name>')
 def success(name):
-    return 'welcome your login success: %s' % name
+    return 'task is: %s' % name
 
 
-@app.route('/thanks', methods=['post'])
+@app.route('/mysql_mongo', methods=['post'])
 def hello_world():
     host_mo = request.form['host_mo']
     host_mysql = request.form['host_mysql']
@@ -28,6 +29,15 @@ def hello_world():
 def new():
     path = request.form['path']
     val = conn2.migrate(path)
+    print(val)
+    return redirect(url_for('success', name=val))
+
+
+@app.route('/csv', methods=['post'])
+def new2():
+    # path = request.form['path']
+    val = conn3.mongoimportcsv(
+        'C:/Users/Harsheet/Downloads/NLP-based-data-integration/connectors/cities_final.csv', 'temp1', 'temp')
     print(val)
     return redirect(url_for('success', name=val))
 

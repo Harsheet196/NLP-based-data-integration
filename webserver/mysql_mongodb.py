@@ -36,4 +36,4 @@ def migrate(host_mo, host_mysql, client_mo, db_mysql, user_mysql, pass_mysql):
                 mgocol.insert_one(row)
             except:
                 print("error insert")
-    return (True)
+    return ("done")
