@@ -18,5 +18,5 @@ def mongoimportcsv(csv_path, db_name, coll_name, db_url='localhost', db_port=270
 
 
 ans = mongoimportcsv(
-    'C:/Users/Harsheet/Downloads/NLP-based-data-integration/connectors/cities_final.csv', 'temp1', 'temp')
+    'E:/6th Sem/Project/final/NLP-based-data-integration/connectors/cities_final.csv', 'temp1', 'temp')
 print(ans)
