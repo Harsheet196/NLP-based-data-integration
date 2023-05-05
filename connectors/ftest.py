@@ -1,6 +1,13 @@
 import pymongo
 import pandas as pd
+from difflib import SequenceMatcher
+# import spacy
 
+# nlp = spacy.load(
+# 'E:/en_core_web_md-3.0.0/en_core_web_md-3.0.0/en_core_web_md/en_core_web_md-3.0.0')
+
+# similarity_score = nlp(preprocessed_attr1).similarity(nlp(preprocessed_attr2))
+# similarity_ratio = SequenceMatcher(None, word1, word2).ratio()
 # connect to the MongoDB server
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 
@@ -52,41 +59,93 @@ HelpKeys = list(HelpAttributes.keys())
 flag = False
 
 changedatttributes = {}
+maxsim = -1
+maxattri = ""
 for i in lis1:
+    maxsim = 0
     flag = False
+    flag2 = False
     for j in NLPkeys:
-        if (i in NLPattributes[j]):
-            flag = True
-            if j not in attributes:
-                attributes[j] = ""
+        for k in NLPattributes[j]:
+            similarity_ratio = SequenceMatcher(None, i, k).ratio()
+            if (similarity_ratio == 1):
+                maxattri = j
+                maxsim = 1
+                flag = True
+                break
+            if (similarity_ratio > 0.8 and similarity_ratio > maxsim):
+                maxsim = similarity_ratio
+                maxattri = j
+                flag = True
+
+        if (maxsim == 1 and flag == True):
+            if maxattri not in attributes:
+                attributes[maxattri] = ""
                 if i not in changedatttributes:
-                    changedatttributes[i] = j
+                    changedatttributes[i] = maxattri
                 break
             else:
                 if i not in changedatttributes:
-                    changedatttributes[i] = j
-        if (flag == True):
+                    changedatttributes[i] = maxattri
+                    break
+            flag2 = True
+        if (flag == True and flag2 == True):
             break
+    if (flag == True):
+        if maxattri not in attributes:
+            attributes[maxattri] = ""
+            if i not in changedatttributes:
+                changedatttributes[i] = maxattri
+            break
+        else:
+            if i not in changedatttributes:
+                changedatttributes[i] = maxattri
+                break
     if (flag == False):
         if (i not in attributes):
             attributes[i] = ""
 
 changedatttributes2 = {}
 for i in lis2:
+    maxsim = 0
     flag = False
+    flag2 = False
     for j in NLPkeys:
-        if (i in NLPattributes[j]):
-            flag = True
-            if j not in attributes:
-                attributes[j] = ""
+        for k in NLPattributes[j]:
+            similarity_ratio = SequenceMatcher(None, i, k).ratio()
+            if (similarity_ratio == 1):
+                maxattri = j
+                maxsim = 1
+                flag = True
+                break
+            if (similarity_ratio > 0.8 and similarity_ratio > maxsim):
+                maxsim = similarity_ratio
+                maxattri = j
+                flag = True
+
+        if (maxsim == 1 and flag == True):
+            if maxattri not in attributes:
+                attributes[maxattri] = ""
                 if i not in changedatttributes2:
-                    changedatttributes2[i] = j
+                    changedatttributes2[i] = maxattri
                 break
             else:
                 if i not in changedatttributes2:
-                    changedatttributes2[i] = j
-        if (flag == True):
+                    changedatttributes2[i] = maxattri
+                    break
+            flag2 = True
+        if (flag == True and flag2 == True):
             break
+    if (flag == True):
+        if maxattri not in attributes:
+            attributes[maxattri] = ""
+            if i not in changedatttributes2:
+                changedatttributes2[i] = maxattri
+            break
+        else:
+            if i not in changedatttributes2:
+                changedatttributes2[i] = maxattri
+                break
     if (flag == False):
         if (i not in attributes):
             attributes[i] = ""
