@@ -23,6 +23,7 @@ body {
 
 .container {
     width: 330px;
+    height: 550;
     background: #fff;
     text-align: center;
     border-radius: 5px;

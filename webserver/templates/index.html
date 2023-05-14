@@ -1,98 +1,47 @@
-<!DOCTORTYPE html>
-<html lang ="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="./src/css/index.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <meta name="viewport" content="width-device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
-  <title>MySql to Mongodb</title>
-  </head>
-<body>
-  <div class="container">
-    <header>Details of MySQL server</header>
-    <div class= "progress-bar">
-      <div class="step">
-        <p>Local Host</p>
-        <div class="bullet">
-          <span>1</span>
-      </div>
-      <div class="check fas fa-check">
-      </div>
-    </div>
 
-      <div class="step">
-        <p>DB</p>
-        <div class="bullet">
-          <span>2</span>
-      </div>
-      <div class="check fas fa-check">
-      </div>
-      </div>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/indexoriginal.css">
+    <title>Document</title>
+ </head>
+ <body>
+    
 
 
-      <div class="step">
-        <p>Credentials</p>
-        <div class="bullet">
-          <span>3</span>
+    <h1>Welcome to NLP based data migration.</h1>
+    <p>Please select the connector for extraction of specific Data type.</p>
+    
+    <section class="main">
+    <a href="./mysqltomongo.html">
+      <div class="wrap wrap--1">
+        <div class="container container--1">
+          <p>SQL based MySQL</p>
+        </div>
       </div>
-      <div class="check fas fa-check">
+    </a>
+    
+    <a href="./mongotomongo.html">
+      <div class="wrap wrap--2">
+        <div class="container container--2">
+          <p>NoSQL based MongoDB</p>
+        </div>
       </div>
+    </a>
+    <a href="./csv.html">
+      <div class="wrap wrap--3">
+        <div class="container container--3">
+          <p >CSV</p>
+        </div>
       </div>
-    </div>
-    <div class="form-outer">
-      <form action="http://localhost:5000/mysql_mongo" method="post">
-        <div class="page slidepage">
-          <div class="title">Local Host Info:</div>
-          <div class="field">
-            <div class="label">Enter Local host of MySQl(Make sure its running):</div>
-            <input type="text"name="host_mysql">
-          </div>
-          <div class="field">
-            <div class="label">Enter Local host of Mongodb(Make sure its running):</div>
-            <input type="text"name="host_mo">
-          </div>
-          <div class="field nextBtn">
-            <button type="button">Next</button>
-          </div>
-          </div>
+    </a>
+    
+    </section>
+   </body>
 
-        <div class="page">
-          <div class="title">Database name</div>
-          <div class="field">
-            <div class="label">Enter DB name of MongoDB DB:</div>
-            <input type="text" name="client_mo">
-          </div>
-          <div class="field">
-            <div class="label">Enter DB name of MySQl:</div>
-            <input type="text" name="db_mysql">
-          </div>
-          <div class="field btns">
-            <button type="button"class="prev-1 prev">Previous</button>
-            <button type="button" class="next-1 next">Next</button>
-          </div>
-          </div>
-        
-        
-       
-        <div class="page">
-          <div class="title">Credentials for Server</div>
-          <div class="field">
-            <div class="label">Username of Mysql DB</div>
-            <input type="text" name="user_mysql">
-          </div>
-          <div class="field">
-            <div class="label">Password of Mysql DB</div>
-            <input type="password" name="pass_mysql">
-          </div>
-          <div class="field btns">
-            <button type="button" class="prev-3 prev">Previous</button>
-            <button type="submit"class="Submit">Submit</button>
-          </div>
-          </div>
-        </form>
-      </div>
-  </div>
-  <script src="./src/js/index.js"></script>
-</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+<script src="./src/js/indexoriginal.js"></script>
 </html>

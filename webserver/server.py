@@ -22,7 +22,7 @@ def hello_world():
     val = connector.migrate(host_mo, host_mysql, client_mo,
                             db_mysql, user_mysql, pass_mysql)
     print(val)
-    return redirect(url_for('success', name=val))
+    return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
 
 
 @app.route('/mongo', methods=['post'])
@@ -30,16 +30,15 @@ def new():
     path = request.form['path']
     val = conn2.migrate(path)
     print(val)
-    return redirect(url_for('success', name=val))
+    return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
 
 
 @app.route('/csv', methods=['post'])
 def new2():
-    # path = request.form['path']
-    val = conn3.mongoimportcsv(
-        'C:/Users/Harsheet/Downloads/Github repos/NLP-based-data-integration/connectors/cities_final.csv', 'temp1', 'temp')
+    path = request.form['path']
+    val = conn3.mongoimportcsv(path, 'temp1', 'temp')
     print(val)
-    return redirect(url_for('success', name=val))
+    return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
 
 
 @app.route('/index', methods=['post'])
