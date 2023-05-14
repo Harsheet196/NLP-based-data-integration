@@ -11,7 +11,7 @@ def success(name):
     return 'task is: %s' % name
 
 
-@app.route('/mysql_mongo', methods=['post'])
+@app.route('/mysql_mongo', methods=['post', 'get'])
 def hello_world():
     host_mo = request.form['host_mo']
     host_mysql = request.form['host_mysql']
@@ -37,9 +37,18 @@ def new():
 def new2():
     # path = request.form['path']
     val = conn3.mongoimportcsv(
-        'C:/Users/Harsheet/Downloads/NLP-based-data-integration/connectors/cities_final.csv', 'temp1', 'temp')
+        'C:/Users/Harsheet/Downloads/Github repos/NLP-based-data-integration/connectors/cities_final.csv', 'temp1', 'temp')
     print(val)
     return redirect(url_for('success', name=val))
+
+
+@app.route('/index', methods=['post'])
+def login():
+    email = request.form['email']
+    password = request.form['password']
+    if (email == "harsh@gmail.com" and password == "harsh"):
+        print("Successful login")
+        return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
 
 
 if __name__ == '__main__':
