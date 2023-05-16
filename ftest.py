@@ -12,13 +12,13 @@ from difflib import SequenceMatcher
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 # access the database and collection
-db = client["DataCheck"]
-collection = db["connector"]
+db = client["temp1"]
+collection = db["temp"]
 
-db2 = client["testsql"]
-collection2 = db2["dataset"]
+db2 = client["temp2"]
+collection2 = db2["user"]
 
-db3 = client["finaltest"]
+db3 = client["result"]
 collection3 = db3["sampletest5"]
 
 
@@ -34,12 +34,12 @@ documents = collection.find()
 # print(documents[0])
 
 lis1 = list(documents[0].keys())
-print(lis1)
+print("Current list of attr:", lis1)
 
 
 document2 = collection2.find()
 lis2 = list(document2[0].keys())
-print(lis2)
+print("Current list of attr:", lis2)
 
 attributes = {}
 
@@ -159,9 +159,9 @@ for i in lis2:
         if (i not in attributes):
             attributes[i] = ""
 
-print(attributes)
-print(changedatttributes)
-print(changedatttributes2)
+print("Now new attributes of db will be:", attributes)
+print("Changed attr of db1:", changedatttributes)
+print("Changed attr of db2:", changedatttributes2)
 
 for i in documents:
     for k in attributes:
@@ -176,7 +176,7 @@ for i in documents:
     for m in changedatttributes:
         if changedatttributes[m] == "Name":
             helplis.append(m)
-    print(helplis)
+    # print(helplis)
     # if ("firstname" in changedatttributes2):
     #     firstname = ""
     #     lastname = ""
@@ -200,7 +200,7 @@ for i in documents:
 
         attributes['Name'] = i[order[0]]+" "+i[order[1]]+" "+i[order[2]]
     attributes.pop("_id")
-    print(attributes)
+    # print(attributes)
     collection3.insert_one(attributes)
 
 for i in document2:
@@ -216,7 +216,7 @@ for i in document2:
     for m in changedatttributes2:
         if changedatttributes2[m] == "Name":
             helplis.append(m)
-    print(helplis)
+    # print(helplis)
     # if ("firstname" in changedatttributes2):
     #     firstname = ""
     #     lastname = ""
@@ -240,5 +240,5 @@ for i in document2:
 
         attributes['Name'] = i[order[0]]+" "+i[order[1]]+" "+i[order[2]]
     attributes.pop("_id")
-    print(attributes)
+    # print(attributes)
     collection3.insert_one(attributes)
