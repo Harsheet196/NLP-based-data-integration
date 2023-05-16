@@ -1,7 +1,10 @@
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, jsonify, url_for
 import mysql_mongodb as connector
 import mongo_to_mongo as conn2
 import csv_mongodb as conn3
+import json
+import io
+from NLP import chatopenai, levenshtein2, rootcheckmodel, ftest
 
 app = Flask(__name__)
 
@@ -45,9 +48,33 @@ def new2():
 def login():
     email = request.form['email']
     password = request.form['password']
+    # we plan to integrate Login using database here
     if (email == "harsh@gmail.com" and password == "harsh"):
         print("Successful login")
         return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
+
+
+@app.route('/dashboard', methods=['post'])
+def buttonclick():
+    data = json.load(io.BytesIO(request.data))
+
+    func = data["funcName"]
+    print("Dashboard function call:", func)
+    if (func == "openai"):
+        a = chatopenai.nlp()
+        print(a)
+        return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
+    elif (func == "leven"):
+        levenshtein2.nlp()
+    elif (func == "root"):
+        rootcheckmodel.nlp()
+    elif (func == "ftest"):
+        ftest.nlp()
+    elif (func == "spacy"):
+        # call spacy func here
+        print("spacy will come here")
+
+    return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
 
 
 if __name__ == '__main__':

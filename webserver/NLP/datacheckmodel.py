@@ -24,11 +24,11 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 
 # access the database and collection
-db = client["Datacheckmodel"]
-collection = db["datasample1"]
+db = client["temp1"]
+collection = db["temp"]
 
-db2 = client["Datacheckmodel"]
-collection2 = db2["datasample2"]
+db2 = client["temp2"]
+collection2 = db2["user"]
 
 db3 = client["Datacheckmodel"]
 collection3 = db3["sampletest"]
