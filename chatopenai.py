@@ -5,8 +5,8 @@ openai.api_key = "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"
 
 tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
 
-docs = ["phone"]
-query = "phone"
+docs = ["phone_no"]
+query = "Department"
 
 
 def construct_context(query, document):
