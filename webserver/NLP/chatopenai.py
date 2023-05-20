@@ -6,14 +6,14 @@ import pymongo
 def nlp():
     client = pymongo.MongoClient("mongodb://localhost:27017/")
 
-    db = client["temp1"]
-    collection = db["temp"]
+    db = client["temp"]
+    collection = db["dataset"]
 
-    db2 = client["temp2"]
-    collection2 = db2["user"]
+    db2 = client["temp"]
+    collection2 = db2["temp2"]
 
-    db3 = client["Datacheckmodel"]
-    collection3 = db3["openaidata"]
+    db3 = client["temp"]
+    collection3 = db3["result_openai"]
 
     openai.api_key = "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"
 
@@ -124,7 +124,7 @@ def nlp():
             changedattributes[i] = lis1[idx]
             maxsimilarity[idx] = maxsim
 
-    print(changedattributes)
+    print("Changed Attributes", changedattributes)
     attributes = {}
     for i in lis1:
         if i not in attributes:

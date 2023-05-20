@@ -14,7 +14,12 @@ import subprocess
 
 
 def migrate(path):
-    stri = 'mongoimport\t'+path+'\t-d bookdb -c books --drop'
-    print(stri)
-    os.system(stri)
+    # stri = 'mongoimport'+path+'-d temp2 -c temp2 --drop'
+    # stri = 'mongoimport "C:/Users/Harsheet/Downloads/Github repos/NLP-based-data-integration/dataset.json" -d temp -c temp2 --drop'
+
+    # print(stri)
+    # os.system(stri)
+    # os.system('mongoimport' + path + '-d temp -c temp2 --drop')
+    # os.system('mongoimport" C:/Users/Harsheet/Downloads/Github repos/NLP-based-data-integration/dataset.json" -d temp -c temp2 --drop')
+    os.system('mongoimport "C:/Users/Harsheet/Downloads/Github repos/NLP-based-data-integration/dataset.json" -d temp -c temp2 --drop')
     return "done"

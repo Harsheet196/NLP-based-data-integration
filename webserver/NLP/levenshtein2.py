@@ -9,14 +9,14 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 # access the database and collection
 def nlp():
-    db = client["temp1"]
-    collection = db["temp"]
+    db = client["temp"]
+    collection = db["dataset"]
 
-    db2 = client["temp2"]
-    collection2 = db2["user"]
+    db2 = client["temp"]
+    collection2 = db2["temp2"]
 
-    db3 = client["LevinshteinDistance"]
-    collection3 = db3["datacheck"]
+    db3 = client["temp"]
+    collection3 = db3["result_leven"]
 
     documents = collection.find()
 
@@ -49,7 +49,7 @@ def nlp():
             if j not in changedattributes:
                 attributes[j] = ""
 
-    print(changedattributes)
+    print("Changed Attributes: ", changedattributes)
     print(attributes)
 
     dict1 = {}

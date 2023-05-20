@@ -9,4 +9,4 @@ import subprocess
 #     ['mongodump --uri="mongodb://localhost:27017/temp1" --gzip --archive | mongorestore --uri="mongodb://localhost:27017/temp11" --nsFrom="temp1.*" --nsTo="temp11.*" --nsInclude="*" --gzip --archive '])
 # subprocess.run(
 #     ['mongoimport E:/6th Sem/Project/final/NLP-based-data-integration/books.json -d bookdb -c books --drop'])
-os.system('mongoimport "E:/books/books.json" -d bookdb -c books --drop')
+os.system('mongoimport "C:/Users/Harsheet/Downloads/Github repos/NLP-based-data-integration/dataset.json" -d temp -c temp2 --drop')

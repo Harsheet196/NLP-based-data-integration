@@ -12,6 +12,7 @@ def migrate(host_mo, host_mysql, client_mo, db_mysql, user_mysql, pass_mysql):
         user=user_mysql,
         passwd=pass_mysql,
         database=db_mysql
+
     )
 
     mycursor = db.cursor()

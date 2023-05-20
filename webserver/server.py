@@ -39,7 +39,7 @@ def new():
 @app.route('/csv', methods=['post'])
 def new2():
     path = request.form['path']
-    val = conn3.mongoimportcsv(path, 'temp1', 'temp')
+    val = conn3.mongoimportcsv(path, 'local', 'startup_log')
     print(val)
     return redirect("http://127.0.0.1:5500/webserver/templates/index.html")
 

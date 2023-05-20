@@ -24,14 +24,14 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 
 # access the database and collection
-db = client["temp1"]
-collection = db["temp"]
+db = client["datatype"]
+collection = db["test1"]
 
-db2 = client["temp2"]
-collection2 = db2["user"]
+db2 = client["datatype"]
+collection2 = db2["test2"]
 
-db3 = client["Datacheckmodel"]
-collection3 = db3["sampletest"]
+db3 = client["datatype"]
+collection3 = db3["result"]
 
 
 # keys = collection.distinct('')

@@ -8,15 +8,14 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 # access the database and collection
 def nlp():
-    db = client["temp1"]
-    collection = db["temp"]
+    db = client["temp"]
+    collection = db["dataset"]
 
-    db2 = client["temp2"]
-    collection2 = db2["user"]
+    db2 = client["temp"]
+    collection2 = db2["temp2"]
 
-    db3 = client["Datacheckmodel"]
-    collection3 = db3["datacheck"]
-
+    db3 = client["temp"]
+    collection3 = db3["result_rootcheck"]
     porter = nltk.PorterStemmer()
     stemmer = SnowballStemmer("english")
 
@@ -60,8 +59,8 @@ def nlp():
             if j not in changedattributes:
                 attributes[j] = ""
 
-    print(changedattributes)
-    print(attributes)
+    print("Changed Attributes: ", changedattributes)
+    print("New aattributes:", attributes)
 
     dict1 = {}
     for i in documents:

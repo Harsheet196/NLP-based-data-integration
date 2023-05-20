@@ -15,14 +15,14 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 
 def nlp():
-    db = client["temp1"]
-    collection = db["temp"]
+    db = client["temp"]
+    collection = db["dataset"]
 
-    db2 = client["temp2"]
-    collection2 = db2["user"]
+    db2 = client["temp"]
+    collection2 = db2["temp2"]
 
-    db3 = client["result"]
-    collection3 = db3["sampletest5"]
+    db3 = client["temp"]
+    collection3 = db3["result_ftest"]
 
     # keys = collection.distinct('')
     # print(keys)
