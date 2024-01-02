@@ -1,5 +1,4 @@
-# NLP-based-data-integration
+# NLP-based-data-integration and migration
 
-## For internal usage:
 
-index: mysql to mongo as it basic step
+
